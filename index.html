@@ -22,11 +22,19 @@
         }
         
         .poster {
-            width: 900px;
+            width: 100%;
+            max-width: 900px;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .poster {
+                border-radius: 0;
+                box-shadow: none;
+            }
         }
         
         .header-section {
@@ -35,6 +43,12 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .header-section {
+                padding: 30px 20px;
+            }
         }
         
         .geometric-bg {
@@ -84,6 +98,20 @@
             z-index: 2;
         }
         
+        @media (max-width: 768px) {
+            .title {
+                font-size: 48px;
+                letter-spacing: 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 36px;
+                letter-spacing: 2px;
+            }
+        }
+        
         .subtitle {
             font-size: 22px;
             color: rgba(255,255,255,0.95);
@@ -107,6 +135,12 @@
             padding: 40px;
         }
         
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px;
+            }
+        }
+        
         .section {
             margin-bottom: 35px;
         }
@@ -127,6 +161,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 25px;
             margin-bottom: 35px;
+        }
+        
+        @media (max-width: 768px) {
+            .problema-solucion {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
         
         .problema-box, .solucion-box {
@@ -198,6 +239,12 @@
             gap: 20px;
         }
         
+        @media (max-width: 768px) {
+            .objetivos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .objetivo-card {
             background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             padding: 20px;
@@ -233,6 +280,14 @@
             border-radius: 15px;
         }
         
+        @media (max-width: 768px) {
+            .features-visual {
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px;
+            }
+        }
+        
         .feature-circle {
             text-align: center;
         }
@@ -262,6 +317,12 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .beneficios-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .beneficio-item {
@@ -368,6 +429,12 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .yo-vendo-features {
+                grid-template-columns: 1fr;
+            }
         }
         
         .yo-vendo-feature {
