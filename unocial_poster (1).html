@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unocial - Poster Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .geometric-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            top: 0;
+            left: 0;
+        }
+        
+        .circle {
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+        
+        .circle1 { width: 200px; height: 200px; top: -50px; right: -50px; }
+        .circle2 { width: 150px; height: 150px; bottom: 20px; left: -30px; }
+        
+        .logo-unach {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 32px;
+            color: #1e3a8a;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .title {
+            font-size: 64px;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.95);
+            font-weight: 300;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: white;
+            margin-top: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
+        
+        .content-section {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        
+        .problema-solucion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        
+        .problema-box, .solucion-box {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .problema-box {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-left: 5px solid #dc2626;
+        }
+        
+        .solucion-box {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-left: 5px solid #3b82f6;
+        }
+        
+        .box-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .problema-box .box-title {
+            color: #991b1b;
+        }
+        
+        .solucion-box .box-title {
+            color: #1e40af;
+        }
+        
+        .box-list {
+            list-style: none;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .box-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .problema-box .box-list li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .solucion-box .box-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .objetivos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .objetivo-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #3b82f6;
+            transition: transform 0.3s ease;
+        }
+        
+        .objetivo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .objetivo-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .objetivo-text {
+            font-size: 14px;
+            color: #1e40af;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .features-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border-radius: 15px;
+        }
+        
+        .feature-circle {
+            text-align: center;
+        }
+        
+        .feature-icon-large {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 3px solid #8b5cf6;
+        }
+        
+        .feature-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #6d28d9;
+            text-transform: uppercase;
+        }
+        
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .beneficio-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .beneficio-text {
+            font-size: 14px;
+            color: #065f46;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        /* YO VENDO SECTION */
+        .yo-vendo-section {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 35px 0;
+            border: 3px solid #f59e0b;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+        
+        .yo-vendo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .yo-vendo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 5px 15px rgba(217, 119, 6, 0.3);
+        }
+        
+        .yo-vendo-title-block {
+            flex: 1;
+        }
+        
+        .yo-vendo-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+        
+        .yo-vendo-subtitle {
+            font-size: 16px;
+            color: #78350f;
+            font-weight: 600;
+        }
+        
+        .yo-vendo-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #451a03;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+        
+        .ods-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #15803d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .yo-vendo-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .yo-vendo-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .yo-vendo-feature-icon {
+            font-size: 28px;
+        }
+        
+        .yo-vendo-feature-text {
+            font-size: 13px;
+            color: #92400e;
+            font-weight: 600;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #6366f1;
+        }
+        
+        .stats-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3730a3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #4338ca;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #312e81;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .footer-section {
+            background: #1e3a8a;
+            padding: 30px 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .author-info {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .qr-note {
+            margin-top: 15px;
+            font-size: 12px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <!-- HEADER -->
+        <div class="header-section">
+            <div class="geometric-bg">
+                <div class="circle circle1"></div>
+                <div class="circle circle2"></div>
+            </div>
+            <div class="logo-unach">🎓</div>
+            <h1 class="title">UNOCIAL</h1>
+            <p class="subtitle">Sistema de Comunicación Universitaria Centralizada</p>
+            <p class="tagline">Conéctate con tu campus</p>
+        </div>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="content-section">
+            
+            <!-- OBJETIVO -->
+            <div class="section">
+                <h2 class="section-title">🎯 Objetivo</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: #374151;">
+                    Diseñar y desarrollar una aplicación web que proporcione a los estudiantes de la 
+                    <strong>Universidad Autónoma de Chiapas</strong> un sistema de comunicación 
+                    <strong>centralizado, accesible y seguro</strong>, permitiendo interacciones tanto 
+                    sociales como académicas entre universitarios, resolviendo la falta de un medio oficial 
+                    de interacción entre facultades y campus.
+                </p>
+            </div>
+            
+            <!-- PROBLEMA VS SOLUCIÓN -->
+            <div class="problema-solucion">
+                <div class="problema-box">
+                    <div class="box-title">
+                        <span style="font-size: 28px;">⚠️</span>
+                        Problemática Actual
+                    </div>
+                    <ul class="box-list">
+                        <li>Dificultad para difundir información académica</li>
+                        <li>Barreras en comunicación entre facultades</li>
+                        <li>Incertidumbre sobre veracidad de mensajes</li>
+                        <li>Riesgos de seguridad en plataformas externas</li>
+                        <li>Canales no oficiales sin control institucional</li>
+                    </ul>
+                </div>
+                
+                <div class="solucion-box">
+                    <div class="box-title">
+                        <span style="font-size: 28px;">💡</span>
+                        Con Unocial
+                    </div>
+                    <ul class="box-list">
+                        <li>Comunicación centralizada y oficial</li>
+                        <li>Integración entre todas las facultades</li>
+                        <li>Información verificada y confiable</li>
+                        <li>Plataforma segura con datos protegidos</li>
+                        <li>Control institucional completo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PILARES PRINCIPALES -->
+            <div class="features-visual">
+                <div class="feature-circle">
+                    <div class="feature-icon-large">💬</div>
+                    <div class="feature-label">Comunicación</div>
+                </div>
+                <div class="feature-circle">
+                    <div class="feature-icon-large">🤝</div>
+                    <div class="feature-label">Colaboración</div>
+                </div>
+                <div class="feature-circle">
+                    <div class="feature-icon-large">🔒</div>
+                    <div class="feature-label">Seguridad</div>
+                </div>
+            </div>
+            
+            <!-- YO VENDO SECTION -->
+            <div class="yo-vendo-section">
+                <div class="yo-vendo-header">
+                    <div class="yo-vendo-icon">🛒</div>
+                    <div class="yo-vendo-title-block">
+                        <div class="yo-vendo-title">Yo Vendo</div>
+                        <div class="yo-vendo-subtitle">Marketplace Universitario</div>
+                    </div>
+                </div>
+                
+                <div class="ods-badge">
+                    🌍 Alineado con Objetivos de Desarrollo Sostenible (ODS)
+                </div>
+                
+                <p class="yo-vendo-description">
+                    Un espacio tipo <strong>Marketplace</strong> destinado exclusivamente a 
+                    <strong>emprendimientos universitarios reales</strong>, donde los estudiantes podrán 
+                    promover sus productos y servicios dentro de un entorno seguro, institucional y enfocado 
+                    al <strong>crecimiento económico joven</strong>.
+                </p>
+                
+                <div class="yo-vendo-features">
+                    <div class="yo-vendo-feature">
+                        <div class="yo-vendo-feature-icon">💼</div>
+                        <div class="yo-vendo-feature-text">Fomento del empleo juvenil</div>
+                    </div>
+                    <div class="yo-vendo-feature">
+                        <div class="yo-vendo-feature-icon">💡</div>
+                        <div class="yo-vendo-feature-text">Innovación estudiantil</div>
+                    </div>
+                    <div class="yo-vendo-feature">
+                        <div class="yo-vendo-feature-icon">♻️</div>
+                        <div class="yo-vendo-feature-text">Consumo responsable</div>
+                    </div>
+                    <div class="yo-vendo-feature">
+                        <div class="yo-vendo-feature-icon">🏪</div>
+                        <div class="yo-vendo-feature-text">Producción local</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OBJETIVOS DE NEGOCIO -->
+            <div class="section">
+                <h2 class="section-title">🎯 Objetivos de Negocio</h2>
+                <div class="objetivos-grid">
+                    <div class="objetivo-card">
+                        <div class="objetivo-icon">🌐</div>
+                        <p class="objetivo-text">Centralizar la comunicación social y académica entre estudiantes y facultades</p>
+                    </div>
+                    <div class="objetivo-card">
+                        <div class="objetivo-icon">🔐</div>
+                        <p class="objetivo-text">Ofrecer acceso seguro y controlado a información institucional relevante</p>
+                    </div>
+                    <div class="objetivo-card">
+                        <div class="objetivo-icon">👥</div>
+                        <p class="objetivo-text">Facilitar la colaboración estudiantil en grupos de estudio, foros y proyectos</p>
+                    </div>
+                    <div class="objetivo-card">
+                        <div class="objetivo-icon">📈</div>
+                        <p class="objetivo-text">Incrementar la participación estudiantil y la cohesión entre campus</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BENEFICIOS ESPERADOS -->
+            <div class="section">
+                <h2 class="section-title">✨ Beneficios Esperados</h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Mejora en la difusión de avisos académicos y administrativos</span>
+                    </div>
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Aumento de la interacción inter-facultades y actividades estudiantiles</span>
+                    </div>
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Menor tiempo de respuesta ante consultas</span>
+                    </div>
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Mayor seguridad y protección de datos estudiantiles</span>
+                    </div>
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Reducción de dependencia de canales no oficiales</span>
+                    </div>
+                    <div class="beneficio-item">
+                        <span class="check-icon">✓</span>
+                        <span class="beneficio-text">Fortalecimiento de la vida estudiantil</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- JUSTIFICACIÓN -->
+            <div class="stats-section">
+                <div class="stats-title">📊 Impacto en la Comunidad UNACH</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">🏛️</span>
+                        <span class="stat-label">Múltiples Facultades</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🌍</span>
+                        <span class="stat-label">Varios Campus</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">👨‍🎓</span>
+                        <span class="stat-label">Miles de Estudiantes</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer-section">
+            <p class="contact-info">📧 Hokzaap | @Hokzaap.org</p>
+            <p class="author-info">Universidad Autónoma de Chiapas</p>
+        </div>
+    </div>
+</body>
+</html>
